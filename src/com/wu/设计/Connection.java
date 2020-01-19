@@ -24,6 +24,7 @@ public class Connection extends Service {
 
     public void prit(){
         System.out.println(functions);
+        testS();
     }
 
 }

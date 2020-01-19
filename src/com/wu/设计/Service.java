@@ -3,9 +3,10 @@ package com.wu.设计;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+/**
+ * 业务Class
+ */
 public abstract class Service {
-
-
     /**
      * 初始化远程调用方法
      * @param hashMap
@@ -21,6 +22,10 @@ public abstract class Service {
                 hashMap.put(remoteMethod.functionKey(),method);
             }
         }
+    }
+
+    public void testS(){
+        System.out.println(getClass().getName());
     }
 
 }

@@ -22,5 +22,6 @@ public class GameService extends Service {
 
     public void prit(){
         System.out.println(functions);
+        testS();
     }
 }

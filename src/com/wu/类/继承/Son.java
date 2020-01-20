@@ -5,8 +5,8 @@ import java.util.concurrent.Semaphore;
 public class Son  extends Father{
     @Override
     public void prit() {
-        System.out.println(" test ");
-        Semaphore semaphore = new Semaphore(0);
+        System.out.println("son test ");
+
 
    }
 }

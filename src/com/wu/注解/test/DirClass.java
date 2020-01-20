@@ -7,8 +7,8 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-public @interface DirClass {
-    String str() default "";
+public @interface DirClass{
+    Class<?> str() ;
 
 
 }

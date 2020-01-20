@@ -6,10 +6,11 @@ import java.util.concurrent.Semaphore;
 
 public class Mian {
     public static void main(String[] args) {
-        System.out.println(17 & 15);
+        Father e = new Sun();
+        e.prit();
 
     }
 
-    Semaphore as = new Semaphore(1);
+
 
 }

@@ -1,9 +1,11 @@
-package com.wu.设计.core.until;
+package com.wu.设计.core;
 
-import com.wu.设计.core.Headquarters;
-import com.wu.设计.core.IThreadPlan;
-import com.wu.设计.core.ThreadImplementer;
+import com.wu.设计.Service;
+import com.wu.设计.core.messagepack.Req;
 
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -11,12 +13,27 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * 业务部基类
  */
 public class Department implements IThreadPlan {
-    //当前线程实例
+
+    //todo  日志
+    /**当前线程实例*/
     final static ThreadLocal<Department> currentDepart = new ThreadLocal<>();
     /**线程执行者*/
     private final ThreadImplementer threadImpl;
-    /**所属总部*/
+
+
+    /**当前业务描述*/
     private Headquarters head;
+    private String DepartmentId;
+
+    /**最新一条消息的ID*/
+    private long newReqID;
+
+    /**下属服务*/
+    private Map<String, Service> services = new ConcurrentHashMap<>();
+
+    /**请求处理栈*/
+    private LinkedList<Req> reqActiveStack = new LinkedList<>();
+
     /**消息队列*/
     private ConcurrentLinkedQueue<Req> reqs = new ConcurrentLinkedQueue<Req>();
 

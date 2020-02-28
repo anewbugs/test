@@ -7,7 +7,7 @@ package com.wu.设计.core;
  */
 public interface IThreadPlan {
     /**
-     * 线程启动初始化
+     * 线程初始化
      */
     public void runInit();
 

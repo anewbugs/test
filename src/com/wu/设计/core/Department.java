@@ -2,9 +2,11 @@ package com.wu.设计.core;
 
 import com.wu.设计.Service;
 import com.wu.设计.core.messagepack.Req;
+import com.wu.设计.core.messagepack.ReqResultBase;
+import com.wu.设计.core.messagepack.Task;
+import com.wu.设计.core.until.Watch;
 
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -37,6 +39,23 @@ public class Department implements IThreadPlan {
     /**消息队列*/
     private ConcurrentLinkedQueue<Req> reqs = new ConcurrentLinkedQueue<Req>();
 
+    /**消息返回值*/
+    private ConcurrentLinkedQueue<Req> reqResults = new ConcurrentLinkedQueue<>();
+
+    /**一次心跳处理的Req请求*/
+    private List<Req> pulseReqs = new ArrayList<>();
+
+    /**一次心跳接收到的返回值*/
+    private List<Req> pulseReqResults = new ArrayList<>();
+
+    /**port执行任务*/
+    private ConcurrentLinkedQueue<Task> tasks = new ConcurrentLinkedQueue<>();
+
+    /**执行计时器*/
+    private Watch pluseStepWatch = new Watch();
+
+    /**返回监听*/
+    private Map<Long, ReqResultBase> reqResultListener = new HashMap<>();
 
 
     public Department(Headquarters head){
@@ -62,4 +81,6 @@ public class Department implements IThreadPlan {
     public void runUninstall() {
         currentDepart.set(null);
     }
+
+
 }

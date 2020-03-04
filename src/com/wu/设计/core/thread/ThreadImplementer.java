@@ -1,4 +1,4 @@
-package com.wu.设计.core;
+package com.wu.设计.core.thread;
 
 import com.wu.设计.core.until.Watch;
 

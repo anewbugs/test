@@ -1,4 +1,4 @@
-package com.wu.设计.core;
+package com.wu.设计.core.thread;
 
 import com.wu.设计.Service;
 import com.wu.设计.core.messagepack.Req;
@@ -58,6 +58,10 @@ public class Department implements IThreadPlan {
     private Map<Long, ReqResultBase> reqResultListener = new HashMap<>();
 
 
+    /**
+     * 构造方法
+     * @param head 线程池管理类
+     */
     public Department(Headquarters head){
         this.threadImpl = new ThreadImplementer(this);
         this.head = head;
@@ -67,6 +71,7 @@ public class Department implements IThreadPlan {
         return (T) currentDepart.get();
     }
 
+
     @Override
     public void runInit() {
         currentDepart.set(this);
@@ -74,13 +79,86 @@ public class Department implements IThreadPlan {
 
     @Override
     public void runPulse() {
-
+        pulse();
     }
+
 
     @Override
     public void runUninstall() {
         currentDepart.set(null);
     }
 
+    /**
+     * 星耀
+     */
+    private void pulse() {
+        //加载本次心跳的请求
+        pulseReqLoad();
 
+        //处理本次请求
+        pulseReqs();
+
+        //处理本次返回值
+        pulseReqResults();
+
+        //清除超时监听
+        pulseReqResultListenTimeOut();
+
+        //运行子类星耀
+        pulseOveride();
+
+        //刷新本次星耀缓存
+        flushReqbuffer();
+    }
+
+
+    /**
+     * 加载本次要处理的请求
+     */
+    private void pulseReqLoad() {
+        //加载亲求
+        while(!reqs.isEmpty()){
+            pulseReqs.add(reqs.poll());
+        }
+        //加载返回值
+        while(!reqResults.isEmpty()){
+            pulseReqResults.add(reqResults.poll());
+        }
+    }
+
+    /**
+     * 处理本次请求
+     */
+    private void pulseReqs() {
+        // todo
+    }
+
+    /**
+     * 处理本次返回值
+     */
+    private void pulseReqResults() {
+        // todo
+    }
+
+    /**
+     * 处理超时监听
+     */
+    private void pulseReqResultListenTimeOut() {
+        // todo
+    }
+
+    /**
+     * 子类实现星耀
+     */
+    private void pulseOveride() {
+    }
+
+    /**
+     * 清除本次心跳缓存
+     */
+    private void flushReqbuffer() {
+        pulseReqs.clear();
+        pulseReqResults.clear();
+
+    }
 }

@@ -1,6 +1,8 @@
 package com.wu.设计.core.messagepack;
 
 
+import com.wu.设计.core.until.Params;
+
 public class Req {
     /**
      * 请求类型枚举类
@@ -29,5 +31,9 @@ public class Req {
 
     /**消息具体数据*/
     public Object[] methodParam;
+
+    /**返回值*/
+    public Params returns ;
+
 
 }

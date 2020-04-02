@@ -1,5 +1,6 @@
 package com.wu.设计.core.messagepack;
 
+
 import com.wu.设计.core.function.Function2;
 import com.wu.设计.core.until.Params;
 

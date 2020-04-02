@@ -6,8 +6,10 @@ import java.util.concurrent.Semaphore;
 
 public class Mian {
     public static void main(String[] args) {
-        Father e = new Sun();
-        e.prit();
+        Son e = new Son();
+        Sun sun = new Sun();
+        Son son = new Son();
+
 
     }
 

@@ -6,6 +6,6 @@ package com.wu.设计.core.function;
  * @param <P1> 参数1
  * @param <P2> 参数2
  */
-public interface Function2 <R,P1,P2>{
-    R apply(P1 p1,P2 p2);
+public interface Function2<R,P1,P2>{
+    R apply(P1 p1, P2 p2);
 }
